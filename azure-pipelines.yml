@@ -13,7 +13,6 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
-    command: 'custom'
     workingDir: '$(Build.SourcesDirectory)/vcelicky'
   displayName: 'Install Node.js'
 
