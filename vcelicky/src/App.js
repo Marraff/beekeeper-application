@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Menu from './pages/Menu.js'
+import Register from './pages/Register'
 
 //jednoduche vyuzitie react routru na presmerovanie 
 
@@ -15,7 +16,8 @@ function App() {
     
   <Router>
     <Switch>
-      <Route path="/" element={<Menu/>}/> 
+      <Route path="/" exact element={<Menu/>}/> 
+      <Route path="/register" element={<Register/>}/>
     </Switch>
   </Router>
   

@@ -25,7 +25,7 @@ export const SidebarData = [
     },
     {
         title: 'Registrácia',
-        path: '/',
+        path: '/register',
         icon: <AiIcons.AiFillPlusCircle />,
         cName: 'nav-text'
     },
