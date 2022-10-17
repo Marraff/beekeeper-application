@@ -1,1 +1,5 @@
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="AIzaSyBZhZDwFF3W-CdXUIHW2QkZsDP46efhuiQ"
+
+**/.env*
+**/node_modules
+**/.gitignore
