@@ -4,34 +4,34 @@ import * as GiIcons from "react-icons/gi"
 
 export const SidebarData = [
     {
-        title: 'Informácie',
-        path: '/',
-        font: 'montseratt',
-        icon: <AiIcons.AiFillIdcard />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Úle',
-        font: 'montseratt',
+        title: 'Map of hives',
+        /*font: 'montseratt',*/
         path: '/',
         icon: <GiIcons.GiBeehive />,
         cName: 'nav-text'
     },
     {
-        title: 'Kontakt',
+        title: 'Information',
+        path: '/',
+        /*font: 'montseratt',*/
+        icon: <AiIcons.AiFillIdcard />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Contact',
         path: '/',
         icon: <AiIcons.AiFillMessage />,
         cName: 'nav-text'
     },
     {
-        title: 'Registrácia',
+        title: 'Register',
         path: '/register',
         icon: <AiIcons.AiFillPlusCircle />,
         cName: 'nav-text'
     },
     {
         title: 'Login',
-        path: '/',
+        path: '/login',
         icon: <AiIcons.AiOutlineLogin />,
         cName: 'nav-text'
     },

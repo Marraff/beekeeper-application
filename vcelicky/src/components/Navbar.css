@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400, 500, 600");
 
 .background {
   background-color: white;
@@ -11,7 +12,8 @@
 }
 
 .navbar {
-  background-color: #1893ff;
+  /*background-color: #1893ff;*/
+  background-color: #fbd604;
   height: 80px;
   display: flex;
   justify-content: start;
@@ -30,23 +32,41 @@
 }
 
 .nav-menu{
-  background-color: #fcec45;
+  /*background-color: #fcec45;*/
   width: 250px;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   position: fixed;
   top: 0;
   left: -100%;
   transition: 850ms;
-  font-style: normal;
+  /*font-style: normal;
   font-family: lato;
   font-weight: bold;
+  */
+  /*align-items: flex-start; */
+  /*display: flex;*/ 
+  gap: 29px; 
+  /*height: 298px; */
+  justify-content: flex-end; 
+  /*min-width: 249px;*/
+}
+
+.rectangle-5224 {
+  background-color: black;
+  border: 1px none;
+  height: 100vh;
+  margin-top: 0;
+  width: 6px;
 }
 
 .nav-menu.active{
+  
   left: 0;
   transition: 350ms;
+  border: 2px none;
+  background-color: var(--athens-gray);
 }
 
 .nav-text{
@@ -94,6 +114,128 @@ span{
 }
 
 .map-container{
-  width: 50%;
-  height: 50vh;
+  margin-top: 70px; 
+  margin-right: 4.82px;
+  width: 100%;
+  height: 70vh;
+  margin-top: 50px; 
+  align-self: flex-end;
+  
+}
+
+/* figma*/
+
+.main-screen {
+  align-items: flex-start; 
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 37.03px; 
+  min-height: 1379px; 
+  width: 1000px;
+}
+
+.map-of-hives { 
+ 
+  flex-direction: column; 
+  /*gap: 390px;*/ 
+  margin-right: 200px; 
+  min-height: 600px; 
+  width: 990px;
+  left: 150px
+
+}
+
+.title {
+  letter-spacing: 0; 
+  min-height: 37px; 
+  width: 100hv;
+}
+
+.information-2 {
+  align-items: flex-start; 
+  display: flex; 
+  flex-direction: column; 
+  /*gap: 28px; */
+  /*margin-left: 3.52px; */
+  margin-top: 50px; 
+  min-height: 70px; 
+  padding: 1.1px 0.1px;
+  width: 944px;
+}
+.information-3, 
+.place-2 {
+  letter-spacing: 0; 
+  min-height: 30px; 
+  width: 345px;
+}
+
+.lorem-ipsum-dolor-si { 
+  margin-top: 50px; 
+  align-self: flex-end;
+  letter-spacing: 0; 
+  margin-right: 4.82px;
+  min-height: 293px; 
+  width: 100%;
+}
+
+.contact-1 {
+  align-items: flex-end; 
+  display: flex; 
+  height: 379px; 
+  justify-content: flex-end;
+  margin-top: 50px; 
+  min-width: 100vh; 
+  position: relative; 
+
+}
+
+.contact2 {
+  align-items: flex-end; 
+  display: flex; 
+  flex-direction: column; 
+  margin-bottom: 0; 
+  margin-left: 106px; 
+  min-height: 272px; 
+  width: 165px;
+}
+
+.ellipse-503 {
+  margin-top: 50px; 
+  border: 1px none; 
+  border-radius: 81.43px/120.5px; 
+  height: 350px; 
+  /*margin-right: 2.15px; */
+  width: 1000px;
+}
+
+.meno-priezvisko {
+  margin-top: 50px; 
+  letter-spacing: 0; 
+  margin-right: 2px; 
+  min-height: 31px;
+  width: 153px;
+}
+
+.contact1 {
+  height: 272px; 
+  margin-right: 37.73px; 
+  position: relative; 
+  width: 165px;
+}
+
+.ellipse-503-1 { 
+  background-color: var(--cultured-pearl); 
+  border: 1px none; 
+  border-radius: 81.43px/120.5px; 
+  height: 241px; left: 0; 
+  position: absolute; 
+  top: 0; width: 163px;
+}
+
+.meno-priezvisko-1 {
+  left: 10px; 
+  letter-spacing: 0; 
+  position: absolute; 
+  top: 241px;
+  width: 153px;
 }

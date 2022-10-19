@@ -1,96 +1,88 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom"
-import styles from "../Register.css"
-import Navbar from "../components/Navbar"
+import {useState, useEffect} from "react"
+import {Box, Heading, Text, VStack, HStack} from "@chakra-ui/layout"
+import {FormControl, FormLabel} from "@chakra-ui/form-control"
+import { Button, Checkbox, Input } from '@chakra-ui/react'
+import {Link} from "react-router-dom"
+import Axios from "axios"
+import * as AiIcons from "react-icons/ai"
 
-function Register(props){
+function Register(){
     
-    const{ registracia1, heslo, text1, registracia2, spanText1, spanText2, email1Props, email2Props } = props; 
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
+      /* Axios.post('http://localhost:3001/register', {
+          name: name, 
+          email: email,
+          password: password
+        }).then(()=> {
+          console.log("Beekeeper added to database");
+        });*/
+      };
 
     return(
-        <div className='container-center-horizontal'>
-            <div className='registrcia screen'>
-                <div className='flex-row'>
-                    <img className='icon' src='icon.svg' alt='icon'></img>
-                    <h1 className='registrcia'>
-                        {registracia1}
-                    </h1>
-                </div>
-                <Email place={email1Props.place}
-                       menoPriezvisko= {email1Props.menoPriezvisko} />
-                <Email place={email2Props.place}
-                       menoPriezvisko={email2Props.menoPriezvisko}
-                       className={email2Props.classname} />
-                <div className='heslo'>
-                    <div className='heslo-1 montserrat-medium-eerie-black-14px'>
-                        {heslo}
-                    </div>  
-                    <div className='overlap-group'>
-                        <div className='text-1 montserrat-medium-altio-14px'>
-                            {text1}              
-                        </div>
-                        <img className='icon-1' src='icon-1.svg' alt='icon' />
-                    </div>
-                </div>
-                <div className='registracia-1' >
-                    <div className='overlap-group-1'>
-                        <div className='registrcia-2'>
-                            {registracia2}
-                        </div>
-                    </div>
-                </div>
-                <p className='u-mte-konto-prihlaste-sa montserrat-medium-eerie-black-14px'>
-                    <span className='montserrat-medium-eerie-black-14px'>
-                        {spanText1}
-                    </span>
-                    <span className='span1'>
-                        {spanText2}
-                    </span>
-                </p>
-            </div>
-        </div>  
+       <Box
+            w={['full','md']}
+            p={[8,10]}
+            mt={[20,'10vh']}
+            mx='auto'
+            border={['none','1px']}
+            borderColor={['','gray.300']}
+            borderRadius={10}
+        >
+            <VStack spacing={4} align='flex-start' w='full'>
+                <HStack spacing={1} align={['flex-start','center']} alignSelf='center'>
+                
+                    <Link to='/'>
+                        {<AiIcons.AiOutlineArrowLeft/>}
+                        
+                    </Link>
+                  
+                    <Heading>Register</Heading>>
+                </HStack>
+                <FormControl>
+                    <FormLabel>Name</FormLabel>
+                    <Input rounder='none' 
+                           variant='filled'
+                           placeholder='Name Surname' 
+                           onChange={(event) => {
+                            setName(event.target.value)}}/>
+                </FormControl>
+                <FormControl>
+                    <FormLabel>E-mail address</FormLabel>
+                    <Input rounder='none' 
+                           variant='filled' 
+                           placeholder='email@gmail.com'
+                           onChange={(event) => {
+                            setEmail(event.target.value)}}/>
+                </FormControl>
+                <FormControl>
+                    <FormLabel>Password</FormLabel>
+                    <Input rounder='none' 
+                           variant='filled' 
+                           type='password' 
+                           placeholder='********'
+                           onChange={(event) => {
+                            setPassword(event.target.value)}}/>
+                </FormControl>
+                <HStack w='full' justify='space-between'>
+                    
+                </HStack>
+                <Button rounder='none' 
+                        colorScheme='blue' 
+                        width='365px'
+                        onClick={ ()=> {onSignUpPressed();}}>Register</Button>
+                <Button variant='link' 
+                        colorScheme='blue' 
+                        alignSelf='center'>Already registered? Log in</Button>
+            </VStack>
+
+
+       </Box>
     );      
 }
 
-function Email(props){
-    const{ place, menoPriezvisko, className} = props;
-
-    return(
-        <div className={`email ${className || ""}`}>
-            <div className='place montserrat-medium-eerie-black-14px'>
-                {place}
-            </div>
-            <div className='overlap-group-2'>
-                <div className='meno/priezvisko montserrat-medium-altio-14px'>
-                    {menoPriezvisko}
-                </div>
-            </div>
-        </div>
-    );
-}
-
-const email1data = {
-    place: "meno",
-    menoPriezvisko: "Meno Priezvisko",
-};
-
-const email2data = {
-    place: "E-mail",
-    menoPriezvisko: "jozkomrkvicka@gmail.com",
-    className: "email-1",
-};
-
-const registrciaData = {
-    registracia1: "Registrácia",
-    heslo: "Heslo",
-    text1: "*************",
-    registracia2: "Registrácia",
-    spanText1: "Už máte konto? ",
-    spanText2: "Prihláste sa",
-    email1Props: email1data,
-    email2Props: email2data,
-
-}
-
-
-export default Register;
+export default Register
