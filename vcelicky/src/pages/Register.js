@@ -14,7 +14,7 @@ function Register(){
     const [password, setPassword] = useState('');
 
     const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
-       Axios.post('https://vcelicky.fiit.stuba.sk/register', {
+       Axios.post('http://localhost:3001/register',{//https://vcelicky.fiit.stuba.sk/register', {
           name: name, 
           email: email,
           password: password

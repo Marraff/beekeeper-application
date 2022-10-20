@@ -1,6 +1,6 @@
-secret.txt
+.env
+BaltimoreCyberTrustRoot.crt.pem
 .gitignore
-
 **/.env*
 **/node_modules
 **/.gitignore
