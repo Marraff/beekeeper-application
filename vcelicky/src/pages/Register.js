@@ -12,16 +12,38 @@ function Register(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [data, setData] = useState('');
 
     const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
-       Axios.post('http://localhost:3001/register',{//https://vcelicky.fiit.stuba.sk/register', {
+      
+        
+        Axios.post('https://icy-river-0b8c67503.1.azurestaticapps.net/api/register',{//https://vcelicky.fiit.stuba.sk/register', {
           name: name, 
           email: email,
           password: password
         }).then(()=> {
           console.log("Beekeeper added to database");
         });
+        
+        /*
+            (async function () {
+              const { text } = await( await fetch(`/register`,  
+              { 
+                method: 'POST',
+                mode: 'cors',
+                body:
+                    {
+                    name: name, 
+                    email: email,
+                    password: password
+                    }
+              }
+              )).json();
+              setData(text);
+            })();*/
       };
+      
+      
 
     return(
        <Box
@@ -74,7 +96,7 @@ function Register(){
                 <Button rounder='none' 
                         colorScheme='blue' 
                         width='365px'
-                        onClick={ ()=> {onSignUpPressed();}}>Register</Button>
+                        onClick={ ()=> {onSignUpPressed().then(console.log(data));}}>Register</Button>
                 <Button variant='link' 
                         colorScheme='blue' 
                         alignSelf='center'>Already registered? Log in</Button>

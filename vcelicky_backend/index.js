@@ -41,7 +41,7 @@ connection.on("connect", err => {
 
 connection.connect();
 
-app.post('https://vcelicky.fiit.stuba.sk/register', (req,res) => {
+app.post('https://sql-dxcbeehive-prod.database.windows.net/register', (req,res) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
@@ -59,13 +59,14 @@ app.post('/register', (req,res) => {
    
 });
 
+/*
 var httpsServer = https.createServer(app);
 httpsServer.listen(3001, ()=> {
     console.log("Server running on port: 3001 ")
 });
 
 module.exports = httpsServer;
-
+*/
 
 /*
 var config =
