@@ -16,7 +16,26 @@ function Register(){
 
     const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
       
+
+      (async function () {
+       
+          const { text } = await( await fetch(`api/register`,  
+          { 
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            params:
+                {
+                'name': 'name', 
+                'email': 'email',
+                'password': 'password'
+                }
+          }
+          )).json();
+          setData(text);
         
+       
+      })();
+        /*
         Axios.post('https://icy-river-0b8c67503.1.azurestaticapps.net/api/register',{//https://vcelicky.fiit.stuba.sk/register', {
           name: name, 
           email: email,
@@ -24,6 +43,7 @@ function Register(){
         }).then(()=> {
           console.log("Beekeeper added to database");
         });
+        */
         
         /*
             (async function () {
@@ -71,7 +91,8 @@ function Register(){
                            variant='filled'
                            placeholder='Name Surname' 
                            onChange={(event) => {
-                            setName(event.target.value)}}/>
+                            setName(event.target.value)
+                            console.log(name)}}/>
                 </FormControl>
                 <FormControl>
                     <FormLabel>E-mail address</FormLabel>
