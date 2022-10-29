@@ -8,7 +8,6 @@ import { IconContext } from "react-icons"
 import {useNavigate} from "react-router-dom"
 import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api"
 import img from "./contactIMG.png"
-//require("dotenv").config();
 
 
 function Navbar(menuData){

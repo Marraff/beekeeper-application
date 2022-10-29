@@ -14,6 +14,7 @@ function Register(){
     const [password, setPassword] = useState('');
     const [data, setData] = useState('');
 
+<<<<<<< HEAD
     const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi odbc
       //sql alchemy + knižnica odbc
 // spraviť v api  databazové modely github copilot
@@ -39,6 +40,10 @@ function Register(){
       
         /*
         Axios.post('https://icy-river-0b8c67503.1.azurestaticapps.net/api/register',{//https://vcelicky.fiit.stuba.sk/register', {
+=======
+    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
+       Axios.post('https://vcelicky.fiit.stuba.sk/register', {
+>>>>>>> parent of 2252cbe (vytvorený backend)
           name: name, 
           email: email,
           password: password

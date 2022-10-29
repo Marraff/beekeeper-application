@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const mysql = require('mysql');
 const fs = require('fs');
 const { Connection, Request } = require("tedious");
@@ -182,3 +183,5 @@ conn.connect(
     }
 });
 */
+=======
+>>>>>>> parent of 2252cbe (vytvorený backend)
