@@ -15,7 +15,7 @@ var config =
     user: process.env.USER_AZURE,
     password: process.env.PASSWORD_AZURE,
     database: process.env.DATABASE_AZURE,
-    port: process.env.PORT_AZURE,
+    //port: process.env.PORT_AZURE,
     //ssl: {ca: fs.readFileSync(process.env.SERURITY_CERTIFICATE)}
 };
 
@@ -30,7 +30,7 @@ conn.connect(
     else
     {
        console.log("Connection established.");
-           queryDatabase();
+          // queryDatabase();
     }
 });
 
@@ -39,10 +39,10 @@ function queryDatabase(){
         if (err) throw err; 
         console.log('Dropped inventory table if existed.');
     })
-        conn.query('CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);', 
-            function (err, results, fields) {
-                if (err) throw err;
-        console.log('Created inventory table.');
+    conn.query('CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);', 
+        function (err, results, fields) {
+            if (err) throw err;
+    console.log('Created inventory table.');
     })
     conn.query('INSERT INTO inventory (name, quantity) VALUES (?, ?);', ['banana', 150], 
             function (err, results, fields) {

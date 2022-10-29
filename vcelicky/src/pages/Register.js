@@ -14,27 +14,29 @@ function Register(){
     const [password, setPassword] = useState('');
     const [data, setData] = useState('');
 
-    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
-      
-
+    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi odbc
+      //sql alchemy + knižnica odbc
+// spraviť v api  databazové modely github copilot
       (async function () {
        
-          const { text } = await( await fetch(`api/register`,  
-          { 
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            params:
-                {
-                'name': 'name', 
-                'email': 'email',
-                'password': 'password'
-                }
-          }
-          )).json();
-          setData(text);
-        
-       
+          //const { text } = await( await fetch(`api/register`,  
+          Axios.post(`api/register`, { 
+            //method: 'POST',
+            //headers: {'Content-Type': 'application/json'},
+            //body:
+            //    {
+              name: name, 
+              email: email,
+              password: password
+            }).then(()=> {
+              console.log("Beekeeper added to database");
+            });
+            //    }
+          //}
+          //)).json();
+          //setData(text);
       })();
+      
         /*
         Axios.post('https://icy-river-0b8c67503.1.azurestaticapps.net/api/register',{//https://vcelicky.fiit.stuba.sk/register', {
           name: name, 
