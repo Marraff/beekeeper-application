@@ -3,72 +3,40 @@ import {useState, useEffect} from "react"
 import {Box, Heading, Text, VStack, HStack} from "@chakra-ui/layout"
 import {FormControl, FormLabel} from "@chakra-ui/form-control"
 import { Button, Checkbox, Input } from '@chakra-ui/react'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import Axios from "axios"
 import * as AiIcons from "react-icons/ai"
 
 function Register(){
-    
+    const navigate = useNavigate(); 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [data, setData] = useState('');
 
-<<<<<<< HEAD
-    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi odbc
-      //sql alchemy + knižnica odbc
-// spraviť v api  databazové modely github copilot
+    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
+      
+
       (async function () {
        
-          //const { text } = await( await fetch(`api/register`,  
-          Axios.post(`api/register`, { 
-            //method: 'POST',
-            //headers: {'Content-Type': 'application/json'},
-            //body:
-            //    {
+           const resp = Axios.post(`api/register`, { 
+           
               name: name, 
               email: email,
-              password: password
+              password: password,
+              role: "beekeeper"
+
             }).then(()=> {
-              console.log("Beekeeper added to database");
+              console.log(resp);
             });
-            //    }
-          //}
-          //)).json();
-          //setData(text);
-      })();
-      
-        /*
-        Axios.post('https://icy-river-0b8c67503.1.azurestaticapps.net/api/register',{//https://vcelicky.fiit.stuba.sk/register', {
-=======
-    const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
-       Axios.post('https://vcelicky.fiit.stuba.sk/register', {
->>>>>>> parent of 2252cbe (vytvorený backend)
-          name: name, 
-          email: email,
-          password: password
-        }).then(()=> {
-          console.log("Beekeeper added to database");
-        });
-        */
-        
-        /*
-            (async function () {
-              const { text } = await( await fetch(`/register`,  
-              { 
-                method: 'POST',
-                mode: 'cors',
-                body:
-                    {
-                    name: name, 
-                    email: email,
-                    password: password
-                    }
-              }
-              )).json();
-              setData(text);
-            })();*/
+           
+      })();  
       };
+
+      const onAlreadyRegisteredPressed = () => {
+        
+        navigate('/login');
+      }
       
       
 
@@ -98,8 +66,7 @@ function Register(){
                            variant='filled'
                            placeholder='Name Surname' 
                            onChange={(event) => {
-                            setName(event.target.value)
-                            console.log(name)}}/>
+                            setName(event.target.value)}}/>
                 </FormControl>
                 <FormControl>
                     <FormLabel>E-mail address</FormLabel>
@@ -127,7 +94,8 @@ function Register(){
                         onClick={ ()=> {onSignUpPressed().then(console.log(data));}}>Register</Button>
                 <Button variant='link' 
                         colorScheme='blue' 
-                        alignSelf='center'>Already registered? Log in</Button>
+                        alignSelf='center'
+                        onClick={ ()=> {onAlreadyRegisteredPressed();}}>Already registered? Log in</Button>
             </VStack>
 
 

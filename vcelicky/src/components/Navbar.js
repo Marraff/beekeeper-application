@@ -9,7 +9,6 @@ import {useNavigate} from "react-router-dom"
 import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api"
 import img from "./contactIMG.png"
 
-
 function Navbar(menuData){
 
     const {
@@ -30,9 +29,9 @@ function Navbar(menuData){
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
     let history = useNavigate();
-
+    console.log(process.env)
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY//"AIzaSyBZhZDwFF3W-CdXUIHW2QkZsDP46efhuiQ",
 
     })
 
