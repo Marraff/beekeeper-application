@@ -29,27 +29,28 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     with pyodbc.connect('DRIVER='+DRIVER+';SERVER=tcp:'+SERVER+';PORT=1433;DATABASE='+DATABASE+';UID='+USERNAME+';PWD='+ PASSWORD) as conn:
         with conn.cursor() as cursor:
-             cursor.execute("SELECT role, auth FROM users")
+             cursor.execute("SELECT auth FROM users WHERE email = ?", (email))
              row = cursor.fetchone()
              while row:
-                print (str(row[0]) + " " + str(row[1]))
+                print (str(row))
+                auth = str(row)
+                auth = auth[2:62].encode('utf-8')
+                print(auth)
                 row = cursor.fetchone()
-             '''
-            cursor.execute("SELECT auth, role FROM users WHERE email = ?", (email))
-            row = cursor.fetchone()
-            while row:
-            print((row[0]) + " " + (row[1]))
-            row = cursor.fetchone()
-            
-              if not bcrypt.checkpw(password, auth):
-                 return func.HttpResponse(
-                    "User wasn't found",
-                    status_code=400
-                 )
-            '''
+                
+                
+               # checking password
+                result = bcrypt.checkpw(password, auth)
+                print(result)
+        
              
-    
-    return func.HttpResponse(
-             "User logged in.",
-             status_code=200
-        )
+    if result == True:
+      return func.HttpResponse(
+               "User logged in.",     
+               status_code=200
+         )
+    elif result  == False:
+        return func.HttpResponse(
+               "Failed to log in.",     
+               status_code=404
+         )

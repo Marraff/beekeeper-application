@@ -36,6 +36,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     role = req_body['role']
 
     auth = bcrypt.hashpw(password, bcrypt.gensalt())
+    print(auth)
 
     with pyodbc.connect('DRIVER='+DRIVER+';SERVER=tcp:'+SERVER+';PORT=1433;DATABASE='+DATABASE+';UID='+USERNAME+';PWD='+ PASSWORD) as conn:
         with conn.cursor() as cursor:
