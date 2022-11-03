@@ -25,7 +25,7 @@ function Navbar(){
     },[]); 
  
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+        googleMapsApiKey: 'AIzaSyBZhZDwFF3W-CdXUIHW2QkZsDP46efhuiQ'//process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
     })
 
