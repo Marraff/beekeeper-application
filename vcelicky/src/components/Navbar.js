@@ -18,9 +18,9 @@ function Navbar(){
     const showSidebar = () => setSidebar(!sidebar); 
     
     useEffect(()=>{
-        Axios.get('api/loadHives')
-        .then((response) => setHivesList(response))
-        .then(console.log(hivesList))
+        Axios.get('api/pokus')
+        .then((response) => console.log(response))//setHivesList(response))
+        //.then(console.log(hivesList))
     
     },[]); 
  

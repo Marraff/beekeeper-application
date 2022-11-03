@@ -26,10 +26,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+      "start": "react-scripts start",
+      "build": "CI=false && react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:7071",
   "eslintConfig": {
@@ -49,5 +49,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@azure/static-web-apps-cli": "^1.0.3",
+    "azure-functions-core-tools": "^3.0.4837",
+    "concurrently": "^7.5.0"
   }
 }

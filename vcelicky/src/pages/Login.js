@@ -20,14 +20,14 @@ function Login(){
 
     (async function () {
      
-         const resp = Axios.put(`api/login`, { 
+         const resp = Axios.post(`api/pokus`, { 
          
             email: email,
             password: password,
             
-          }).then(()=> {
-            console.log(resp);
-          });
+          })
+          .then((response) => console.log(response))
+          //.then(()=> { console.log(resp);});
          
     })();  
     };
