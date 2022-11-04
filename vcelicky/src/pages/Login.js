@@ -26,8 +26,8 @@ function Login(){
             password: password,
             
           })
-          //.then((response) => console.log(response))
-          .then(()=> { console.log(resp);});
+          .then((response) => console.log(response))
+          //.then(()=> { console.log(resp);});
          
     })();  
     };
