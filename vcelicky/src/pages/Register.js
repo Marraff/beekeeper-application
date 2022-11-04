@@ -26,8 +26,8 @@ function Register(){
               password: password,
               role: "beekeeper"
 
-            }).then(()=> {
-              console.log(resp);
+            }).then((response)=> {
+              console.log(response);
             });
            
       })();  
@@ -91,7 +91,7 @@ function Register(){
                 <Button rounder='none' 
                         colorScheme='blue' 
                         width='365px'
-                        onClick={ ()=> {onSignUpPressed().then(console.log(data));}}>Register</Button>
+                        onClick={ ()=> {onSignUpPressed()}}>Register</Button>
                 <Button variant='link' 
                         colorScheme='blue' 
                         alignSelf='center'
