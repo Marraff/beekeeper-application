@@ -1,29 +1,65 @@
 import React, {useEffect, useState} from "react";
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { SidebarData } from "./SidebarData"
 import styles from "./Navbar.css"
 import { IconContext } from "react-icons"
 import {useNavigate} from "react-router-dom"
-import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api"
+import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api"
 import img from "./contactIMG.png"
 import Axios from "axios"
 
 function Navbar(){
 
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(true);
     const [hivesList, setHivesList] = useState('');
-
     const showSidebar = () => setSidebar(!sidebar); 
+    
+    var hives ;
+    var hives2 = [];
+    var positions;
+    var futureJSON;
     
     useEffect(()=>{
         Axios.get('api/loadHives')
-        .then((response) => console.log(response))//setHivesList(response))
-        //.then(console.log(hivesList))
+        .then((response) => {setHivesList(response.data);}) //setHivesList(response.data)})
+        
+    },[hivesList]); 
+
+    const prepareHivesList = () => {
+        
+        hives = hivesList;
+        hives = hives.split(')')
+        hives.pop()
+        //console.log(hives)
+
+        hives.map(hive => {
+            
+            positions = hive.split(',')
+            futureJSON = hive.substring(2,254)
+            futureJSON = futureJSON.replace('(','')
+            futureJSON = JSON.parse(futureJSON)
+            //console.log(futureJSON)
+            hive = { "data": 
+                futureJSON
+                , "lat": parseFloat(positions[12]), "lng": parseFloat(positions[11]), "id": parseInt(positions[13])}
+            //console.log(hive)
+            hives2.push(hive)
+       
+        })
+        //hives2.pop()
+        
+
+    }
+   
+   
+    const navigate = useNavigate();
+    const onSignUpPressed = (hive) =>{
+        //console.log(hive)
+        navigate('/hiveDetail', { state: hive})
+    }
     
-    },[]); 
- 
     const {isLoaded} = useLoadScript({
         googleMapsApiKey: 'AIzaSyBZhZDwFF3W-CdXUIHW2QkZsDP46efhuiQ'//process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
@@ -40,9 +76,7 @@ function Navbar(){
                  
             </div>
             <div className="background"> 
-            
-                    
-                
+          
             <nav className={sidebar ? "nav-menu active" : "nav-menu poppins-normal-haiti-20px"} >
                 <ul className="nav-menu-items" onClick={(showSidebar)}>
                     <li className="navbar-toggle">
@@ -68,7 +102,21 @@ function Navbar(){
                     <div className="title poppins-normal-black-20px">
                         Map of hives
                     </div>
-                    <Map />
+                    
+                    <GoogleMap 
+                        zoom={7.9} 
+                        center={{lat: 48.669, lng: 19.699}} 
+                        mapContainerClassName="map-container">
+                        {prepareHivesList()}
+                        {hives2.map((hive) => (
+                                <Marker key={hive.id} 
+                                        position={{lat: hive.lat, lng: hive.lng}}
+                                        onClick={ ()=> {onSignUpPressed(hive);}}></Marker>
+                        ))}
+
+                     </GoogleMap>
+
+
                 </div>
                 <div className="information-2">
                     <div className="information-3 poppins-normal-black-30px">
@@ -88,12 +136,8 @@ function Navbar(){
                     </div>
                     <img className="ellipse-503" src={img}></img>
                    
-                </div>
-               
-                
+                </div>               
             </div>
-                
-            
             </div>
             </IconContext.Provider>
         </>
@@ -115,5 +159,6 @@ function Map(){
 
             </GoogleMap>
 }
+
 
 export default Navbar;

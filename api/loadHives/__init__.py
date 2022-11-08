@@ -13,20 +13,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     PASSWORD = os.environ["PASSWORD_AZURE"]  
     DRIVER= '{ODBC Driver 17 for SQL Server}'
 
-    result = []
+    result = ''
     
     with pyodbc.connect('DRIVER='+DRIVER+';SERVER=tcp:'+SERVER+';PORT=1433;DATABASE='+DATABASE+';UID='+USERNAME+';PWD='+ PASSWORD) as conn:
         with conn.cursor() as cursor:
-            cursor.execute("SELECT data FROM bee_hives WHERE is_public = ?", ("true"))
+            cursor.execute("SELECT data,longtitude,latitude,id FROM bee_hives WHERE is_public = ?", ("true"))
             
             rows = cursor.fetchall()
             
             for dt in rows:
-                result.append([x for x in dt])
+                #result.append([x for x in dt])
+                result += str(dt)
                 print(result)
 
-    result = result[0]
-    result = result[0]
-    print(result)
+    #result = result[0]
+    #result = result[0]
+    #print(result)
  
     return func.HttpResponse(result, status_code=201)

@@ -8,6 +8,7 @@ import {
 import Menu from './pages/Menu.js'
 import Register from './pages/Register.js'
 import Login from './pages/Login.js'
+import HiveDetail from './pages/HiveDetail.js'
 import { ChakraProvider } from '@chakra-ui/react'
 
 //jednoduche vyuzitie react routru na presmerovanie 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" exact element={<Menu/>}/> 
         <Route path="/register" element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/hiveDetail' element={<HiveDetail/>}/>
       </Switch>
     </Router>
   </ChakraProvider>
