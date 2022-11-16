@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Login(){
 
- 
+  const navigate = useNavigate(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //let msg = 0;
@@ -55,7 +55,7 @@ function Login(){
                   });
                 }
               if (response.data == '200'){
-                toast.success('Successfully logged in!', {
+               /* toast.success('Successfully logged in!', {
                   position: "top-right",
                   autoClose: 5000,
                   hideProgressBar: false,
@@ -65,52 +65,18 @@ function Login(){
                   progress: undefined,
                   theme: "colored",
                   });
+*/
+                  navigate('/loggedIn',{ state: email})
               }
           })
-            //setMsg(response.data); console.log(response)})
-            //.then((response)=>setMsg(response.data))
-            //.then(console.log("async funkcia"))
-            //console.log(response.data)
-            //.then(console.log(msg))//;})
-          //.then(notify())
+           
           }
       catch(err){
         console.log(err)
       } 
        
     }getData()
-    
-    //.then(notify())
     };
-
-    const notify = () => {
-      console.log("notify funkcia")
-      console.log(msg)
-      if (msg == '404'){
-        toast.error('Passwords or emails does not match!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          });
-      }
-      if (msg == '200'){
-        toast.success('Successfully logged in!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          });
-      }
-    }
 
     
     return(

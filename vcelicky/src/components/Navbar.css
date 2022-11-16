@@ -16,12 +16,15 @@
   background-color: #fbd604;
   height: 80px;
   display: flex;
-  justify-content: start;
+  /*justify-content: end;*/
   align-items: center;
   font-size: 30px;
   font-family: lato;
-  
+}
 
+.signed-in{
+  justify-content: end;
+  
 }
 
 .menu-bars{

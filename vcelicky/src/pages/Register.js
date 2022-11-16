@@ -16,11 +16,7 @@ function Register(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [data, setData] = useState('');
-    const [status_code, setStatusCode] = useState('info')
-    const [description, setDescription] = useState('')
-    const [msg, setMsg] = useState('')
-
+   
     const onSignUpPressed = () => {             //poslanie udajov o registrovanom zakaznikovy na server aby sa zapisali do databazi
       
 
@@ -76,7 +72,7 @@ function Register(){
                     }
                 if (response.data == '200'){
 
-                  toast.success('Successfully registered!', {
+                  /*toast.success('Successfully registered!', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -85,7 +81,9 @@ function Register(){
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                    });
+                    });*/
+
+                  navigate('/loggedIn',{ state: "operation successfull"})
                 }
             })
               

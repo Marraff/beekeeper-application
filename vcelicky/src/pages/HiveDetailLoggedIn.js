@@ -12,7 +12,7 @@ import Axios from "axios"
 import * as AiIcons from "react-icons/ai"
 import { IconContext } from "react-icons"
 import * as FaIcons from "react-icons/fa"
-import { SidebarData } from "../components/SidebarData"
+import { SidebarData } from "../components/SidebarDataLoggedIn"
 
 function HiveDetail(){
 
@@ -64,7 +64,7 @@ function HiveDetail(){
                     <Heading w={['full','md']}
                             
                              borderColor={['','gray.300']}
-                             borderRadius={10}  mx='auto'>Latest public hive data</Heading>
+                             borderRadius={10}  mx='auto'>Latest hive data</Heading>
                         
                         <SimpleGrid
                             bg='gray.50'

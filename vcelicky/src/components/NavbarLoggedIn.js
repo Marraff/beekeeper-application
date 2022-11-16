@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
 import { Link, Navigate } from "react-router-dom"
-import { SidebarData } from "./SidebarData"
+import { SidebarData } from "./SidebarDataLoggedIn"
 import styles from "./Navbar.css"
 import { IconContext } from "react-icons"
 import {useNavigate, useLocation} from "react-router-dom"
@@ -20,17 +20,35 @@ function Navbar(){
     const [sidebar, setSidebar] = useState(true);
     const [hivesList, setHivesList] = useState('');
     const showSidebar = () => setSidebar(!sidebar);
+    const [email, setEmail] = useState('')
     
     var hives ;
     var hives2 = [];
     var positions;
     var futureJSON;
+    let poc = '0'
     
     useEffect(()=>{
-        Axios.get('api/loadHives')
-        .then((response) => {setHivesList(response.data);}) //setHivesList(response.data)})
-        /*.then( () => { if (location.state == 'operation successfull') {
+        
+        //console.log(location.state)
+        setEmail(location.state)
+        //location.state = ''
+        
             
+            
+        
+        //console.log(email)
+        Axios.put('api/loadHivesLoggedIn',{ 
+         
+            email: location.state,
+            
+          })
+        .then((response) => {setHivesList(response.data);}) //setHivesList(response.data)})
+        .then( () => { 
+            
+            if (location.state != '') {
+            //poc =  '1'
+            setEmail(location.state)
             location.state = ''
             
             toast.success('Successfully logged in!', {
@@ -44,10 +62,10 @@ function Navbar(){
                 theme: "colored",
                 });
             
-        }
-        })*/
+            }
+        })
     
-    },[hivesList]); 
+    },[hivesList,email]); 
 
     const prepareHivesList = () => {
         
@@ -79,7 +97,7 @@ function Navbar(){
     const navigate = useNavigate();
     const onSignUpPressed = (hive) =>{
         //console.log(hive)
-        navigate('/hiveDetail', { state: hive})
+        navigate('/hiveDetailLoggedIn', { state: hive})
     }
     
     const {isLoaded} = useLoadScript({
@@ -93,9 +111,12 @@ function Navbar(){
         <>
             <IconContext.Provider value={{color: "black" }}>
             <div className="navbar">
+                
                 <Link to = "#" className="menu-bars"></Link>
                     <FaIcons.FaBars onClick={showSidebar}/>
-                 
+                <div className="signed-in">
+                    <h1 >{email}</h1>
+                </div>
             </div>
             <div className="background"> 
           
@@ -120,6 +141,7 @@ function Navbar(){
                 
             </nav>
             <div className="main-screen">
+            
                 <div className="map-of-hives">
                     <div className="title poppins-normal-black-20px">
                         Map of hives
