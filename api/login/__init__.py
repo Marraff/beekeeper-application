@@ -23,14 +23,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     email = req_body['email']
     password = req_body['password']
     password = password.encode('utf-8')
-
-    #password = bcrypt.hashpw(password, bcrypt.gensalt())
-    #print(password)
+    result = False
+    in_database = 1
 
     with pyodbc.connect('DRIVER='+DRIVER+';SERVER=tcp:'+SERVER+';PORT=1433;DATABASE='+DATABASE+';UID='+USERNAME+';PWD='+ PASSWORD) as conn:
         with conn.cursor() as cursor:
              cursor.execute("SELECT auth FROM users WHERE email = ?", (email))
              row = cursor.fetchone()
+
+             if row == None:
+                result = False
+                in_database = 0
+                
              while row:
                 print (str(row))
                 auth = str(row)
@@ -46,11 +50,20 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
              
     if result == True:
       return func.HttpResponse(
-               "User logged in.",     
+               #"User logged in.",   
+               "200",  
                status_code=200
          )
-    elif result  == False:
+    elif (result  == False) and (in_database == 1):
         return func.HttpResponse(
-               "Failed to log in.",     
-               status_code=404
+               #"Failed to log in.", 
+               "404",    
+               status_code=200
+         )
+    elif ((result  == False) and (in_database == 0)):
+        print('no account')
+        return func.HttpResponse(
+               #"Failed to log in.", 
+               "405",    
+               status_code=200
          )

@@ -22,27 +22,40 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     req_body = req.get_json()
     name = req_body['name']
     email = req_body['email']
+    password = req_body['password']
 
     if not (re.fullmatch(regex, email)):
-        print("Invalid Email")
         return func.HttpResponse(
-             "Invalid email.",
-             status_code=400
+             "405",
+             status_code=200
         )
- 
 
-    password = req_body['password']
+    if (name == '' or password == ''):
+        return func.HttpResponse(
+             "406",
+             status_code=200
+        )
     password = password.encode('utf-8')
     role = req_body['role']
 
     auth = bcrypt.hashpw(password, bcrypt.gensalt())
     print(auth)
-
     with pyodbc.connect('DRIVER='+DRIVER+';SERVER=tcp:'+SERVER+';PORT=1433;DATABASE='+DATABASE+';UID='+USERNAME+';PWD='+ PASSWORD) as conn:
         with conn.cursor() as cursor:
-            cursor.execute("INSERT INTO users (name, email, auth, role) VALUES (?,?,?,?)", (name,email,auth,role))
-            
+            cursor.execute("SELECT auth FROM users WHERE email = ?", (email))
+            row = cursor.fetchone()
+
+            if row == None:
+                with pyodbc.connect('DRIVER='+DRIVER+';SERVER=tcp:'+SERVER+';PORT=1433;DATABASE='+DATABASE+';UID='+USERNAME+';PWD='+ PASSWORD) as conn:
+                    with conn.cursor() as cursor:
+                        cursor.execute("INSERT INTO users (name, email, auth, role) VALUES (?,?,?,?)", (name,email,auth,role))
+            else:
+                return func.HttpResponse(
+                "404",
+                status_code=200
+        )
+              
     return func.HttpResponse(
-             "Beekeeper added to database.",
+             "200",
              status_code=200
         )
