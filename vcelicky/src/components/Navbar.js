@@ -100,7 +100,8 @@ function Navbar(){
                 
                  
             </div>
-            <div className="background"> 
+            
+            <div className= {sidebar ? "background active" : "background"}> 
           
             <nav className={sidebar ? "nav-menu active" : "nav-menu poppins-normal-haiti-20px"} >
                 <ul className="nav-menu-items" >
@@ -122,25 +123,26 @@ function Navbar(){
                 </ul>
                 
             </nav>
+
             <div className="main-screen">
                 <div className="map-of-hives">
                     <div className="title poppins-normal-black-20px">
                         Map of hives
                     </div>
                     
-                    <GoogleMap 
-                        zoom={7.9} 
-                        center={{lat: 48.669, lng: 19.699}} 
-                        mapContainerClassName="map-container">
-                        {prepareHivesList()}
-                        {hives2.map((hive) => (
-                                <Marker key={hive.id} 
-                                        position={{lat: hive.lat, lng: hive.lng}}
-                                        onClick={ ()=> {onSignUpPressed(hive);}}></Marker>
-                        ))}
+                        <GoogleMap 
+                            zoom={7.9} 
+                            center={{lat: 48.669, lng: 19.699}} 
+                            mapContainerClassName="map-container">
+                            {prepareHivesList()}
+                            {hives2.map((hive) => (
+                                    <Marker key={hive.id} 
+                                            position={{lat: hive.lat, lng: hive.lng}}
+                                            onClick={ ()=> {onSignUpPressed(hive);}}></Marker>
+                            ))}
 
-                     </GoogleMap>
-
+                        </GoogleMap>
+                 
 
                 </div>
                 <div className="information-2">

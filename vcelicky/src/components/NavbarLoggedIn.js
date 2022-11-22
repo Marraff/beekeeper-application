@@ -118,7 +118,7 @@ function Navbar(){
                     <h1 >{email}</h1>
                 </div>
             </div>
-            <div className="background"> 
+            <div className= {sidebar ? "background active" : "background"}>  
           
             <nav className={sidebar ? "nav-menu active" : "nav-menu poppins-normal-haiti-20px"} >
                 <ul className="nav-menu-items" onClick={(showSidebar)}>

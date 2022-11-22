@@ -18,14 +18,12 @@ function HiveDetail(){
 
   const navigate = useNavigate()
   const location = useLocation()
-  const [sidebar, setSidebar] = useState(true)
+  const [sidebar, setSidebar] = useState(false)
   const showSidebar = () => setSidebar(!sidebar)
   const [hiveData, setHiveData] = useState({})
-  var hData = {}
   
   useEffect(()=>{
-    setHiveData(location.state)
-    hData=location.state
+    setHiveData(location.state.data)
 
   },[hiveData]); 
  
@@ -33,16 +31,16 @@ function HiveDetail(){
         <>
             <IconContext.Provider value={{color: "black" }}>
             <div className="navbar">
-                <Link to = "#" className="menu-bars"></Link>
+                
                     <FaIcons.FaBars onClick={showSidebar}/>
                  
             </div>
-            <div className="background"> 
+            <div className= {sidebar ? "background active" : "background"}>  
           
             <nav className={sidebar ? "nav-menu active" : "nav-menu poppins-normal-haiti-20px"} >
-                <ul className="nav-menu-items" onClick={(showSidebar)}>
+                <ul className="nav-menu-items" >
                     <li className="navbar-toggle">
-                        <Link to="#" className="menu-bars">
+                        <Link to="#" className="menu-bars" onClick={(showSidebar)}>
                             <AiIcons.AiOutlineClose/>
                         </Link>
                     </li>
@@ -77,62 +75,60 @@ function HiveDetail(){
                             >
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.outside_humidity}
+                                    {hiveData.outside_humidity}
                                 </Box>
                                 <Text fontSize="2xl" as='b' >Outside humidity</Text>
                             </VStack>
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.outside_temperature}
+                                    {hiveData.outside_temperature}
                                 </Box>
                                 <Text fontSize="2xl" as='b' >Outside temperature</Text>
                             </VStack>
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.precipitation_total}
+                                    {hiveData.precipitation_total}
                                 </Box>
                                 <Text fontSize="2xl" as='b' >Precipitation total</Text>
                             </VStack>
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.air_preassure}
+                                    {hiveData.air_preassure}
                                 </Box>
                                 <Text fontSize="2xl" as='b' >Air preassure</Text>
                             </VStack>
                         </SimpleGrid>
-                        <HStack
+                        <SimpleGrid
                             bg='gray.50'
-                            
-                            spacing='195'
-                            padding='10'
+                            columns={{ sm: 2, md: 4 }}
+                            spacing='8'
+                            p='10'
                             textAlign='center'
                             rounded='lg'
-                            
                             color='gray.400'
-                            align={['flex-start','center']} 
-                            alignSelf='center'
                             >
+                            
                             
                                 <VStack >
                                     <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                        {location.state.data.home_frequency}
+                                        {hiveData.home_frequency}
                                     </Box>
                                     <Text fontSize="2xl" as='b' >Home frequency</Text>
                                 </VStack>
                                 <VStack >
                                     <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                        {location.state.data.wind_strenght}
+                                        {hiveData.wind_strenght}
                                     </Box>
                                     <Text fontSize="2xl" as='b' >Wind strenght</Text>
                                 </VStack>
                                 <VStack >
                                     <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                        {location.state.data.wind_direction}
+                                        {hiveData.wind_direction}
                                     </Box>
                                     <Text fontSize="2xl" as='b' >Wind direction</Text>
                                 </VStack>
                             
-                        </HStack>
+                        </SimpleGrid>
                         <SimpleGrid
                             bg='gray.50'
                             columns={{ sm: 2, md: 4 }}
@@ -145,25 +141,25 @@ function HiveDetail(){
                             >
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.inside_humidity}
+                                    {hiveData.inside_humidity}
                                 </Box>
                                 <Text fontSize="2xl" as='b'>Inside humidity</Text>
                             </VStack>
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.inside_humidity}
+                                    {hiveData.inside_temperature}
                                 </Box>
-                                <Text fontSize="2xl" as='b'>Inside humidity</Text>
+                                <Text fontSize="2xl" as='b'>Inside temperature</Text>
                             </VStack>
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.hive_weight}
+                                    {hiveData.hive_weight}
                                 </Box>
                                 <Text fontSize="2xl" as='b'>Hive weight</Text>
                             </VStack>
                             <VStack >
                                 <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {location.state.data.move}
+                                    {hiveData.move}
                                 </Box>
                                 <Text fontSize="2xl" as='b'>Moved</Text>
                             </VStack>

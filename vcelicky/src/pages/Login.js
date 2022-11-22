@@ -118,7 +118,7 @@ function Login(){
                     
                     <Button rounder='none' 
                             colorScheme='blue' 
-                            width='365px'
+                            width='100%'
                             onClick={ ()=> { onSignUpPressed(); }  }>Login</Button>
                     
                     <Button variant='link' colorScheme='blue' alignSelf='center'>Forgot password?</Button>

@@ -11,10 +11,18 @@
   color: black;
 }
 
+.background.active{
+  
+  margin-left: 250px;
+  background-color: white;
+  
+}
+
 .navbar {
   /*background-color: #1893ff;*/
   background-color: #fbd604;
   height: 80px;
+  width: auto;
   display: flex;
   /*justify-content: end;*/
   align-items: center;
@@ -67,9 +75,10 @@
 .nav-menu.active{
   
   left: 0;
-  transition: 350ms;
+  /*transition: 350ms;*/
   border: 2px none;
-  background-color: var(--athens-gray);
+  background-color: white;
+  
 }
 
 .nav-text{
@@ -119,7 +128,7 @@ span{
 .map-container{
   margin-top: 70px; 
   margin-right: 4.82px;
-  width: 100%;
+  width: 100hv;
   height: 70vh;
   margin-top: 50px; 
   align-self: flex-end;
@@ -134,7 +143,7 @@ span{
   flex-direction: column; 
   margin-top: 37.03px; 
   min-height: 1379px; 
-  width: 1000px;
+  width: 65%;
 }
 
 .map-of-hives { 
@@ -143,7 +152,7 @@ span{
   /*gap: 390px;*/ 
   margin-right: 200px; 
   min-height: 600px; 
-  width: 990px;
+  width: 100%;
   left: 150px
 
 }
@@ -163,7 +172,7 @@ span{
   margin-top: 50px; 
   min-height: 70px; 
   padding: 1.1px 0.1px;
-  width: 944px;
+  width: 100%;
 }
 .information-3, 
 .place-2 {

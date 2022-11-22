@@ -152,7 +152,7 @@ function Register(){
                 </HStack>
                 <Button rounder='none' 
                         colorScheme='blue' 
-                        width='365px'
+                        width='100%'
                         onClick={ ()=> {onSignUpPressed(); }}>Register</Button>
                 <Button variant='link' 
                         colorScheme='blue' 
