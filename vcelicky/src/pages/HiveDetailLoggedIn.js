@@ -21,11 +21,25 @@ function HiveDetail(){
   const [sidebar, setSidebar] = useState(false)
   const showSidebar = () => setSidebar(!sidebar)
   const [hiveData, setHiveData] = useState({})
+  const [email, setEmail] = useState('')
   
   useEffect(()=>{
-    setHiveData(location.state.data)
+    setHiveData(location.state.hiveInfo.data)
+    setEmail(location.state.email)
 
-  },[hiveData]); 
+  },[hiveData,email]); 
+
+  const onSignUpPressed = (num) =>{
+    //console.log(hive)
+    if (num < 3){
+        navigate('/loggedIn', {state: email} )
+    }
+
+    if (num == 3){
+        navigate('/' )
+    }
+   }
+
  
   return(
         <>
@@ -33,27 +47,47 @@ function HiveDetail(){
             <div className="navbar">
                 <Link to = "#" className="menu-bars"></Link>
                     <FaIcons.FaBars onClick={showSidebar}/>
-                 
             </div>
+            <div>  
+                <Text textAlign='end'>
+                    {email}
+                </Text>
+            </div>
+              
             <div className= {sidebar ? "background active" : "background"}> 
           
             <nav className={sidebar ? "nav-menu active" : "nav-menu poppins-normal-haiti-20px"} >
-                <ul className="nav-menu-items" onClick={(showSidebar)}>
+                <ul className="nav-menu-items">
                     <li className="navbar-toggle">
-                        <Link to="#" className="menu-bars">
+                        <Link to="#" className="menu-bars"  onClick={(showSidebar)}>
                             <AiIcons.AiOutlineClose/>
                         </Link>
                     </li>
                     {SidebarData.map((item, index) => {
                         return (
                             <li key={index} className={item.cName}>
-                                <Link to={item.path}>
+                                <Button 
+                                    _hover={{bg: '#1893ff'}}
+                                    width='100%'
+                                    bg='white'
+                                    justifyContent='start'
+                                    height='45px'
+                                    fontSize='24px'
+                                    pl='8px'
+                                    pr='0px'
+                                    pt='8px'
+                                    pb='16px'
+                                    borderRadius='4px'
+                                    onClick={()=> { onSignUpPressed(index); } }>
                                     {item.icon}
                                     <span>{item.title}</span>
-                                </Link>
+                                </Button> 
                             </li>
                         )
-                    })}
+                    })} 
+                 
+                    
+                    
                 </ul>
                 
             </nav>
@@ -98,17 +132,14 @@ function HiveDetail(){
                                 <Text fontSize="2xl" as='b' >Air preassure</Text>
                             </VStack>
                         </SimpleGrid>
-                        <HStack
+                        <SimpleGrid
                             bg='gray.50'
-                            
-                            spacing='195'
-                            padding='10'
+                            columns={{ sm: 2, md: 4 }}
+                            spacing='8'
+                            p='10'
                             textAlign='center'
                             rounded='lg'
-                            
                             color='gray.400'
-                            align={['flex-start','center']} 
-                            alignSelf='center'
                             >
                             
                                 <VStack >
@@ -130,7 +161,7 @@ function HiveDetail(){
                                     <Text fontSize="2xl" as='b' >Wind direction</Text>
                                 </VStack>
                             
-                        </HStack>
+                        </SimpleGrid>
                         <SimpleGrid
                             bg='gray.50'
                             columns={{ sm: 2, md: 4 }}

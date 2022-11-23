@@ -6,20 +6,20 @@ export const SidebarData = [
     {
         title: 'Map of hives',
         /*font: 'montseratt',*/
-        path: '/loggedIn',
+        //path: '/loggedIn',
         icon: <GiIcons.GiBeehive />,
         cName: 'nav-text'
     },
     {
         title: 'Information',
-        path: '/loggedIn',
+        //path: '/loggedIn',
         /*font: 'montseratt',*/
         icon: <AiIcons.AiFillIdcard />,
         cName: 'nav-text'
     },
     {
         title: 'Contact',
-        path: '/loggedIn',
+        //path: '/loggedIn',
         icon: <AiIcons.AiFillMessage />,
         cName: 'nav-text'
     },

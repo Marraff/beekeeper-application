@@ -9,40 +9,37 @@ import {useNavigate, useLocation} from "react-router-dom"
 import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api"
 import img from "./contactIMG.png"
 import Axios from "axios"
-
+import { Text } from "@chakra-ui/react"
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Navbar(){
 
-    const location = useLocation()
+    const location = useLocation();
+    //const stack = createStackNavigator();
     const [sidebar, setSidebar] = useState(true);
     const [hivesList, setHivesList] = useState('');
     const showSidebar = () => setSidebar(!sidebar);
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
     
     var hives ;
     var hives2 = [];
     var positions;
     var futureJSON;
-    let poc = '0'
     
     useEffect(()=>{
         
         //console.log(location.state)
         setEmail(location.state)
         //location.state = ''
-        
-            
-            
-        
+    
         //console.log(email)
         Axios.put('api/loadHivesLoggedIn',{ 
-         
-            email: location.state,
             
-          })
+            email: location.state,//location.state,
+            
+            })
         .then((response) => {setHivesList(response.data);}) //setHivesList(response.data)})
         .then( () => { 
             
@@ -64,7 +61,7 @@ function Navbar(){
             
             }
         })
-    
+
     },[hivesList,email]); 
 
     const prepareHivesList = () => {
@@ -97,7 +94,8 @@ function Navbar(){
     const navigate = useNavigate();
     const onSignUpPressed = (hive) =>{
         //console.log(hive)
-        navigate('/hiveDetailLoggedIn', { state: hive})
+        let sendedData = { "hiveInfo": hive, "email": email}
+        navigate('/hiveDetailLoggedIn', {state: sendedData} )
     }
     
     const {isLoaded} = useLoadScript({
@@ -114,16 +112,18 @@ function Navbar(){
                 
                 <Link to = "#" className="menu-bars"></Link>
                     <FaIcons.FaBars onClick={showSidebar}/>
-                <div className="signed-in">
-                    <h1 >{email}</h1>
-                </div>
+            </div>
+            <div >  
+                <Text textAlign='end'>
+                    {email}
+                </Text>
             </div>
             <div className= {sidebar ? "background active" : "background"}>  
           
             <nav className={sidebar ? "nav-menu active" : "nav-menu poppins-normal-haiti-20px"} >
-                <ul className="nav-menu-items" onClick={(showSidebar)}>
+                <ul className="nav-menu-items" >
                     <li className="navbar-toggle">
-                        <Link to="#" className="menu-bars">
+                        <Link to="#" className="menu-bars" onClick={(showSidebar)}>
                             <AiIcons.AiOutlineClose/>
                         </Link>
                     </li>

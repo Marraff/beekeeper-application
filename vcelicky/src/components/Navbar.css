@@ -22,7 +22,7 @@
   /*background-color: #1893ff;*/
   background-color: #fbd604;
   height: 80px;
-  width: auto;
+  width: 100%;
   display: flex;
   /*justify-content: end;*/
   align-items: center;
