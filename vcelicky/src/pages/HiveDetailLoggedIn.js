@@ -107,55 +107,58 @@ function HiveDetail(){
                             rounded='lg'
                             color='gray.400'
                             >
+                            
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.outside_humidity}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.hive_weight} kg
                                 </Box>
-                                <Text fontSize="2xl" as='b' >Outside humidity</Text>
+                                <Text fontSize="2xl" as='b'>Hive weight</Text>
                             </VStack>
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.outside_temperature}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.move}
                                 </Box>
-                                <Text fontSize="2xl" as='b' >Outside temperature</Text>
+                                <Text fontSize="2xl" as='b'>Moved</Text>
                             </VStack>
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.precipitation_total}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.inside_humidity} %
                                 </Box>
-                                <Text fontSize="2xl" as='b' >Precipitation total</Text>
+                                <Text fontSize="2xl" as='b'>Inside humidity</Text>
                             </VStack>
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.air_preassure}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.inside_temperature} °C
                                 </Box>
-                                <Text fontSize="2xl" as='b' >Air preassure</Text>
+                                <Text fontSize="2xl" as='b'>Inside temperature</Text>
                             </VStack>
+                            
                         </SimpleGrid>
                         <SimpleGrid
                             bg='gray.50'
-                            columns={{ sm: 2, md: 4 }}
+                            columns={{ md: 3 }}
                             spacing='8'
                             p='10'
                             textAlign='center'
                             rounded='lg'
                             color='gray.400'
+                            alignItems='center'
                             >
                             
                                 <VStack >
-                                    <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
+                                    <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
                                         {hiveData.home_frequency}
                                     </Box>
                                     <Text fontSize="2xl" as='b' >Home frequency</Text>
                                 </VStack>
                                 <VStack >
-                                    <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                        {hiveData.wind_strenght}
+                                    <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                        {hiveData.wind_strenght} km/h
                                     </Box>
                                     <Text fontSize="2xl" as='b' >Wind strenght</Text>
                                 </VStack>
                                 <VStack >
-                                    <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
+                                    <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
                                         {hiveData.wind_direction}
                                     </Box>
                                     <Text fontSize="2xl" as='b' >Wind direction</Text>
@@ -173,28 +176,28 @@ function HiveDetail(){
                             
                             >
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.inside_humidity}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.outside_humidity} %
                                 </Box>
-                                <Text fontSize="2xl" as='b'>Inside humidity</Text>
+                                <Text fontSize="2xl" as='b' >Outside humidity</Text>
                             </VStack>
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.inside_humidity}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.outside_temperature} °C
                                 </Box>
-                                <Text fontSize="2xl" as='b'>Inside humidity</Text>
+                                <Text fontSize="2xl" as='b' >Outside temperature</Text>
                             </VStack>
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.hive_weight}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.precipitation_total} mm
                                 </Box>
-                                <Text fontSize="2xl" as='b'>Hive weight</Text>
+                                <Text fontSize="2xl" as='b' >Precipitation total</Text>
                             </VStack>
                             <VStack >
-                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%'>
-                                    {hiveData.move}
+                                <Box boxShadow='md' p='6' rounded='md' bg='white' w='100%' border='4px' borderColor='gray.400'>
+                                    {hiveData.air_preassure} Pa
                                 </Box>
-                                <Text fontSize="2xl" as='b'>Moved</Text>
+                                <Text fontSize="2xl" as='b' >Air preassure</Text>
                             </VStack>
                         </SimpleGrid>
                 
