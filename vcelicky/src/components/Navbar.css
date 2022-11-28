@@ -13,7 +13,7 @@
 
 .background.active{
   
-  margin-left: 250px;
+  /*margin-left: 250px;*/
   background-color: white;
   
 }
@@ -43,25 +43,15 @@
 }
 
 .nav-menu{
-  /*background-color: #fcec45;*/
   width: 250px;
-  height: 100vh;
+  height: 100%;
   display: flex;
-  /*justify-content: center;*/
   position: fixed;
   top: 0;
   left: -100%;
   transition: 850ms;
-  /*font-style: normal;
-  font-family: lato;
-  font-weight: bold;
-  */
-  /*align-items: flex-start; */
-  /*display: flex;*/ 
   gap: 29px; 
-  /*height: 298px; */
   justify-content: flex-end; 
-  /*min-width: 249px;*/
 }
 
 .rectangle-5224 {
@@ -78,6 +68,9 @@
   /*transition: 350ms;*/
   border: 2px none;
   background-color: white;
+  position: absolute;
+  z-index: 1;
+  /*float: left;*/
   
 }
 
@@ -126,12 +119,11 @@ span{
 }
 
 .map-container{
-  margin-top: 70px; 
-  margin-right: 4.82px;
+  margin-top: 70px;
   width: 100hv;
   height: 70vh;
   margin-top: 50px; 
-  align-self: flex-end;
+  /*align-self: flex-end;*/
   
 }
 
@@ -153,7 +145,7 @@ span{
   margin-right: 200px; 
   min-height: 600px; 
   width: 100%;
-  left: 150px
+  left: 150px;
 
 }
 
