@@ -176,6 +176,7 @@ function HiveDetail(){
                                 </VStack>
                             
                         </SimpleGrid>
+                        
                         <SimpleGrid
                             bg='gray.50'
                             columns={{ sm: 2, md: 4 }}
@@ -211,37 +212,38 @@ function HiveDetail(){
                                 <Text fontSize="2xl" as='b' >Air preassure</Text>
                             </VStack>
                         </SimpleGrid>
-                        <SimpleGrid
-                            bg='gray.50'
-                            columns={{ sm: 2, md: 4 }}
-                            spacing='8'
-                            p='10'
-                            textAlign='center'
-                            rounded='lg'
-                            color='gray.400'
-                            
+                        
+                            <SimpleGrid
+                                bg='gray.50'
+                                
+                                spacing='8'
+                                p='10'
+                                textAlign='center'
+                                rounded='lg'
+                                color='gray.400'
+                                
+                                >
+                            <LineChart
+                                width={500}
+                                height={300}
+                                data={data}
+                                margin={{
+                                    top: 5,
+                                    right: 30,
+                                    left: 20,
+                                    bottom: 5,
+                                }}
                             >
-
-                        <LineChart
-                            width={500}
-                            height={300}
-                            data={data}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Line type="monotone" dataKey="hiveWeight" stroke="#8884d8" activeDot={{ r: 8 }} />
-                        </LineChart>
-                        </SimpleGrid>
-                
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="hiveWeight" stroke="#8884d8" activeDot={{ r: 8 }} />
+                            </LineChart>
+                            
+                            </SimpleGrid>
+                        
                 </div>               
             </div>
         </div>
