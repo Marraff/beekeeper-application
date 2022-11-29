@@ -16,10 +16,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Navbar(){
 
-    const location = useLocation()
     const [sidebar, setSidebar] = useState(true);
     const [hivesList, setHivesList] = useState('');
     const showSidebar = () => setSidebar(!sidebar);
+    const [deviceType, setDeviceType] = useState("");
     
     var hives ;
     var hives2 = [];
@@ -28,26 +28,24 @@ function Navbar(){
     
     useEffect(()=>{
         Axios.get('api/loadHives')
-        .then((response) => {setHivesList(response.data);}) //setHivesList(response.data)})
-        /*.then( () => { if (location.state == 'operation successfull') {
-            
-            location.state = ''
-            
-            toast.success('Successfully logged in!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-                });
-            
-        }
-        })*/
+        .then((response) => {setHivesList(response.data);}) 
     
     },[hivesList]); 
+
+    useEffect(() => {
+        if (
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(
+            navigator.userAgent
+          )
+        ) {
+          setDeviceType("mobile-screen");
+          setSidebar(false);
+        } else {
+          setDeviceType("main-screen");
+          setSidebar(true)
+        }
+        
+      }, [deviceType,sidebar]);
 
     const prepareHivesList = () => {
         
@@ -124,7 +122,7 @@ function Navbar(){
                 
             </nav>
 
-            <div className="main-screen">
+            <div className={deviceType}>
                 <div className="map-of-hives">
                     <div className="title poppins-normal-black-20px">
                         Map of hives
@@ -172,21 +170,5 @@ function Navbar(){
         
     )
 }
-
-function Map(){
-    return <GoogleMap 
-                zoom={7.9} 
-                center={{lat: 48.669, lng: 19.699}} 
-                mapContainerClassName="map-container">
-                
-                <Marker
-                    position={{lat: 48.669, lng: 19.699}}
-                    
-                     >
-                </Marker>
-
-            </GoogleMap>
-}
-
 
 export default Navbar;

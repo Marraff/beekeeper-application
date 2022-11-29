@@ -138,6 +138,15 @@ span{
   width: 65%;
 }
 
+.mobile-screen {
+  align-items: flex-start; 
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 37.03px; 
+  min-height: 1379px; 
+  width: 95%;
+}
+
 .map-of-hives { 
  
   flex-direction: column; 

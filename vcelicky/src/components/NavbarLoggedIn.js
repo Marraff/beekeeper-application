@@ -22,6 +22,7 @@ function Navbar(){
     const [hivesList, setHivesList] = useState('');
     const showSidebar = () => setSidebar(!sidebar);
     const [email, setEmail] = useState('');
+    const [deviceType, setDeviceType] = useState("");
     
     var hives ;
     var hives2 = [];
@@ -63,6 +64,19 @@ function Navbar(){
         })
 
     },[hivesList,email]); 
+
+    useEffect(() => {
+        if (
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(
+            navigator.userAgent
+          )
+        ) {
+          setDeviceType("mobile-screen");
+        } else {
+          setDeviceType("main-screen");
+        }
+        
+      }, []);
 
     const prepareHivesList = () => {
         
@@ -140,7 +154,7 @@ function Navbar(){
                 </ul>
                 
             </nav>
-            <div className="main-screen">
+            <div className={deviceType}>
             
                 <div className="map-of-hives">
                     <div className="title poppins-normal-black-20px">
